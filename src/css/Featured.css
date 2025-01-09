@@ -1,0 +1,36 @@
+.category-outer{
+    padding: 20px;
+    width: 100%;
+}
+.Featured-cards{
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+}
+.img-card img{
+    width: 200px;
+    height: 200px;
+}
+
+.img-card{
+    border: 1px solid;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    max-width: 200px;
+    transition: transform ease 0.2s;
+}
+.img-card:hover{
+    transform: scale(1.05);
+}
+.img-card:active{
+    transform: scale(1);
+}
+.img-card p,h5,h6{
+    margin: 5px;
+}
+.Naam{
+    color: rgb(2, 2, 103);
+    font: bold;
+}
+

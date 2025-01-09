@@ -1,0 +1,70 @@
+.profile-right-side {
+    padding: 50px;
+    width: 75%;
+}
+
+.profile-right-side .profile-detail {
+    margin-bottom: 20px;
+    font-size: 14px;
+    width: 70%;
+}
+
+.profile-right-side .profile-detail h4 {
+    margin-bottom: 30px;
+}
+
+.profile-right-side .profile-detail .profile-section {
+    margin-bottom: 25px;
+}
+
+.profile-right-side .profile-detail .profile-section .section-head {
+    display: flex;
+    justify-content: space-between
+}
+
+.profile-right-side .profile-detail .profile-section .section-head button {
+    padding: 2px 10px;
+    border: 1px solid;
+    font-size: medium;
+    border-radius: 15px
+}
+
+.type-data {
+    display: flex;
+    justify-content: space-between;
+}
+
+.type-data .Type h6 {
+    font-size: larger;
+}
+
+.profile-detail .profile-section .type-data ul {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    list-style-type: none;
+    padding: 20px;
+}
+
+.profile-detail .profile-section .type-data ul li {
+    text-align: center;
+    padding: 5px;
+    margin: 5px;
+    background-color: #f3f3f3cb;
+    border: 1px solid #ddddddba;
+    border-radius: 5px;
+}
+
+.type-data h6 {
+    overflow: hidden;
+    border-bottom: 2px solid rgb(99, 4, 4);
+    margin: 20px;
+}
+.profile-out{
+    color: #7e7e7e;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 65vh;
+}

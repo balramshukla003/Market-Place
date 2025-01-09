@@ -1,0 +1,88 @@
+.category-outer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    background-color: white;
+}
+
+.category-head,
+.category-cards,
+.category-btn {
+    margin: 20px 0 20px 0;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+}
+
+.category-cards section {
+    text-align: center;
+    width: 95%;
+}
+
+.category-head h3,
+section h4 {
+    font-family: system-ui;
+}
+
+.category-cards img {
+    width: 300px;
+    height: 250px;
+    max-width: 100%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border-radius: 25px;
+    border: 1px solid blue;
+    transition: transform 0.3s ease;
+}
+
+.category-cards img:hover {
+    transform: scale(1.05);
+}
+
+.category-btn {
+    margin-top: 30px;
+    justify-content: center;
+}
+
+.category-btn button {
+    padding: 10px 30px;
+    color: #007bff;
+    border: 2px solid #007bff;
+    background-color: white;
+    font-size: larger;
+    font-weight: bold;
+    margin: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.category-btn button:hover {
+    color: white;
+    background-color: #007bff;
+}
+
+.line {
+    margin-top: 50px;
+    align-self: center;
+    width: 90%;
+    height: 1px;
+    background: #565757ba;
+}
+
+.see-all {
+    color: #007bff;
+    cursor: pointer;
+    margin-bottom: -60px;
+    transition: transform 0.1s ease;
+
+}
+
+.see-all:hover {
+    color: rgb(41, 4, 111);
+    transform: scale(1.1);
+}
