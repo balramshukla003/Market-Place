@@ -1,0 +1,189 @@
+
+.landing-area {
+    position: relative;
+    width: 100%;
+    height: 80vh;
+}
+
+.landing-area img {
+    margin-top: 79px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80vh;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.text-container {
+    position: absolute;
+    color: white;
+    left: 15%;
+    top: 15%;
+}
+
+.text-container h5 {
+    font-size: 1.5rem;
+    margin: 15px 0px;
+}
+
+
+.careers-heading {
+    padding-bottom: 5px;
+    border-bottom: 1px solid hsla(0, 0%, 90%);
+}
+
+.careers-para {
+    width: 80%;
+    font-family: 'Houschka-medium';
+    font-style: normal;
+    font-size: 4rem;
+    line-height: 4rem;
+    margin-bottom: 0;
+}
+
+
+.landing-area2 {
+    border: 5px solid white;
+    padding: 60px 80px;
+    display: flex;
+    justify-content: space-around;
+    background-color: rgba(220, 220, 226, 1);
+}
+
+.section-card {
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.section-card h1,
+.section-card h2,
+.section-card h5 {
+    margin: 10px 0;
+}
+
+.section-card img {
+    border-radius: 10px;
+}
+
+.careers-link {
+    color: rgba(192, 196, 195, 0.796);
+}
+
+
+.landing-area3 {
+    background-color: black;
+    padding: 30px;
+}
+
+.landing-area3 h2 {
+    margin: 0;
+    color: white;
+    font-size: 2rem;
+}
+
+@media (max-width: 780px) {
+    .landing-area {
+        height: 40vh
+    }
+
+    .landing-area img {
+        margin-top: 68px;
+        height: 50vh;
+    }
+
+    .text-container {
+        top: 5%;
+        left: 5%;
+    }
+
+    .careers-heading {
+        width: 90%;
+    }
+
+    .landing-area2 {
+        align-items: center;
+        padding: 0 20px;
+    }
+
+    .careers-para {
+        font-size: 20px;
+        line-height: 0;
+        margin-bottom: 10px;
+    }
+
+    .section-card {
+        margin: 0px;
+        padding: 10pxpx;
+    }
+
+    .section-card h1 {
+        font-size: medium;
+        margin: 10px 0 2px;
+    }
+
+    .section-card h2 {
+        font-size: 12px;
+        margin: 2px 0;
+    }
+
+    .section-card h5 {
+        font-size: 11px;
+        margin: 2px 0;
+    }
+
+    .section-card p {
+        font-size: 8px;
+    }
+
+    .landing-area3 {
+        padding: 15px 30px;
+    }
+
+    .landing-area3 h2 {
+        font-size: large;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .landing-area {
+        height: 30vh;
+    }
+
+    .landing-area img {
+        margin-top: 72px;
+        width: 100%;
+        height: 40vh;
+    }
+
+    .text-container {
+        top: 5%;
+        left: 5%;
+        width: auto !important;
+    }
+
+    .text-container h5 {
+        margin-top: 10px;
+        margin-bottom: 0px;
+        font-size: 12px;
+    }
+
+    .careers-heading {
+        font-size: 10px;
+    }
+
+    .careers-para {
+        padding-bottom: 5px;
+        font-size: 15px;
+    }
+
+    .careers-link {
+        font-size: 10px;
+
+    }
+
+}

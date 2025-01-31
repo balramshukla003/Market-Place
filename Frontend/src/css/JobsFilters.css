@@ -1,0 +1,117 @@
+.job_search {
+    width: 100%;
+    margin-top: 84px;
+}
+
+.job_search-inner {
+    padding: 10px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.jobHead {
+    word-Spacing: 20px;
+    letter-Spacing: 25px;
+    margin: 50px auto 45px auto;
+    color: darkblue;
+    background-Color: #f0e8e89e;
+    border-Radius: 10px;
+    padding: 5px 0 5px 75px;
+}
+
+.filters-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.filters-container .filter-box {
+    height: 200px;
+    width: 30%;
+    margin: 15px;
+    padding: 25px;
+    overflow-y: scroll;
+    border-radius: 10px;
+    background-color: #f6f6f6;
+    border: 1px solid #333;
+}
+
+.filter-box h2 {
+    color: #333;
+    font-size: large;
+    margin: 0px 0px 10px 5px;
+    border-bottom: 2px solid #2f0505;
+    box-shadow: 0px 25px 20px -20px rgba(54, 52, 52, 0.2);
+}
+
+.checkbox-item {
+    padding: 5px;
+}
+
+.checkbox-item input {
+    height: 18px;
+    width: 18px;
+    font-size: 18px;
+}
+
+.checkbox-item label {
+    padding-left: 5px;
+    font-weight: 500;
+    color: black;
+}
+
+.dividerLine {
+    width: 100%;
+    height: 1px;
+    background-color: #797878;
+    margin: 50px 0px auto;
+}
+
+.filtered-jobs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 75%;
+}
+
+
+
+
+
+@media (max-width: 768px) {
+    .job_search{
+        margin-top: 72px;
+    }
+    .job_search-inner {
+        padding: 0;
+    }
+
+    .filters-container {
+        display: none;
+    }
+
+    .filtered-jobs {
+        width: 100%;
+    }
+
+    .jobHead {
+        font-family: 'Times New Roman', Times, serif;
+        word-spacing: normal;
+        letter-spacing: normal;
+        padding: 0;
+        font-weight: 100;
+        width: 100%;
+        margin: 0;
+        text-align: center;
+    }
+
+    .dividerLine {
+        margin: auto 0 30px 0;
+    }
+}
+
+@media (max-width: 0px) {}

@@ -1,0 +1,49 @@
+.right-sidebar {
+    width: 80%;
+    margin: 30px 20px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    cursor: pointer;
+    background: linear-gradient(#fff, #f2f4f56e, #efefef87);
+    background-color: white;
+}
+
+.right-sidebar:hover {
+    box-shadow: 0px 0px 5px 1px #656565;
+}
+
+.job-description-box {
+    border-radius: 10px;
+    padding: 20px 20px 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.veiw-btn {
+    padding: 0px 20px;
+    font-size: medium;
+    padding: 2px 10px;
+    cursor: pointer;
+}
+
+.veiw-btn:hover {
+    color: white;
+    background-color: #4c86af;
+}
+
+
+
+@media (max-width: 768px) {
+    .right-sidebar {
+        margin: 10px;
+        width: 90%;
+        margin-bottom: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .right-sidebar {
+        padding: 0;
+    }
+}
