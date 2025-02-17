@@ -1,0 +1,266 @@
+/* Base Styles */
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.dashboard-container {
+    display: flex;
+    height: 100vh;
+    background-color: #f5f5f5;
+}
+
+
+.nav-bar {
+    width: 250px;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.nav-button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    border: none;
+    background: none;
+    text-align: left;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    color: #4a5568;
+}
+
+.nav-button:hover {
+    background-color: #ebf8ff;
+}
+
+.nav-button.active {
+    background-color: #bee3f8;
+    color: #2b6cb0;
+    font-weight: 600;
+}
+
+/* Main Content Styles */
+.main-content {
+    flex: 1;
+    padding: 30px;
+    overflow: auto;
+}
+
+.section-title {
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    color: #2d3748;
+}
+
+/* Jobbers Section */
+.search-filter {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.search-input,
+.filter-select {
+    padding: 10px;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.search-input {
+    flex: 1;
+}
+
+.filter-select {
+    width: 200px;
+}
+
+.jobbers-grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.jobber-card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.jobber-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.jobber-name {
+    margin: 0 0 5px 0;
+    font-size: 1.2rem;
+}
+
+.jobber-experience {
+    margin: 0 0 10px 0;
+    color: #718096;
+}
+
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.skill-tag {
+    background-color: #ebf8ff;
+    color: #2b6cb0;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+}
+
+.match-percentage {
+    color: #38a169;
+    font-weight: 700;
+}
+
+.jobber-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+/* Button Styles */
+.primary-button {
+    background-color: #4299e1;
+    color: white;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+.primary-button:hover {
+    background-color: #3182ce;
+}
+
+.secondary-button {
+    background: none;
+    border: 1px solid #4299e1;
+    color: #4299e1;
+    padding: 8px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+/* Contest Form Styles */
+.contest-form {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 700px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #2d3748;
+}
+
+.form-input,
+.form-textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.form-textarea {
+    height: 120px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* Chat Styles */
+.chat-sidebar {
+    width: 350px;
+    background: white;
+    padding: 20px;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.chat-messages {
+    height: calc(100vh - 160px);
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.message {
+    margin-bottom: 15px;
+}
+
+.message-bubble {
+    display: inline-block;
+    padding: 12px;
+    border-radius: 12px;
+    max-width: 80%;
+}
+
+.jobseeker-message .message-bubble {
+    background-color: #f7fafc;
+    color: #2d3748;
+}
+
+.recruiter-message {
+    text-align: right;
+}
+
+.recruiter-message .message-bubble {
+    background-color: #4299e1;
+    color: white;
+}
+
+.message-input-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.message-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .dashboard-container {
+        flex-direction: column;
+    }
+
+    .nav-bar {
+        width: auto;
+    }
+}

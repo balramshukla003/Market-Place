@@ -1,0 +1,43 @@
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.job-form {
+    padding: 20px;
+    border: 2px solid;
+    border-radius: 20px;
+    width: 550px;
+}
+
+.form-section {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    align-items: center;
+}
+
+.form-section label {
+    font-size: 1.2rem;
+}
+
+.form-section input,
+.form-section textarea {
+    font-size: 1.3rem;
+    border-radius: 5px;
+    border: 2px solid #ccc;
+    padding: 5px;
+    color: rgb(82, 60, 60);
+}
+
+.form-section button {
+    width: 180px;
+    padding: 10px;
+    border-radius: 10px;
+    border: navajowhite;
+    background-color: #2e4377;
+    font-size: larger;
+    font-weight: 700;
+    color: white;
+}

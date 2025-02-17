@@ -1,17 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react';
 import '../css/Footer.css';
 import { Link } from 'react-router-dom';
 import Logo from '../assets/logo.png';
 
 const Footer = () => {
-    // Function to scroll to the top of the page
     const handleScrollToTop = () => {
         window.scrollTo(0, 0);
     };
 
-    // Function to handle future feature alerts
     const handleFutureFeatures = () => {
-        alert('Coming Features');
+        alert('Upcoming Features');
     };
 
     return (

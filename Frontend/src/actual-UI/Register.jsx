@@ -24,11 +24,12 @@ const Register = () => {
 
         if (!type) {
             alert("Please select registration type");
+            return;
         } else {
             setLoading(true);
 
             try {
-                const response = await fetch("http://192.168.85.170:5000/insert", {             //192.168.98.170
+                const response = await fetch("http://192.168.159.170:5000/insert", {             //192.168.98.170
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",

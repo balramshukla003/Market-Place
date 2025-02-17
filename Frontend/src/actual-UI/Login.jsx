@@ -13,6 +13,7 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const [type, setRegisterType] = useState(null);
     const Navigate = useNavigate();
 
 
@@ -29,15 +30,22 @@ const Login = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         setError('');
-        setLoading(true);
 
+        if (!type) {
+            alert("Please select login type");
+            return;
+        } else {
+            setLoading(true);
+        }
+
+        console.log(type);
         try {
-            const response = await fetch("http://192.168.85.170:5000/find", {           //192.168.98.170
+            const response = await fetch("http://192.168.159.170:5000/find", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ email, password }),
+                body: JSON.stringify({ email, password, type }),
             });
 
             const data = await response.json();
@@ -46,15 +54,18 @@ const Login = () => {
             if (response.ok) {
                 if (data.match === true) {
                     setUserLoggedIn(true)
+                    setAuthUser({ type: type, Name: data.name })
                     setEmail('');
                     setPassword('');
                     Navigate('/');
-
                 } else {
                     // Reset password on failure only if needed
                     if (data.error === "user not found") {
                         setPassword('');
-                        setError("Invalid email or password");
+                        setError("Invalid email or password or type");
+                    } else if (data.error === 'Type miss match') {
+                        setPassword('');
+                        setError("Invalid email or password or type");
                     } else if (data.error === 'Password not matched') {
                         setPassword('');
                         setError("Invalid password");
@@ -98,6 +109,14 @@ const Login = () => {
                             onChange={(e) => setPassword(e.target.value)}
                             required
                         />
+                        <div className='radio-btns'>
+                            <label htmlFor="option1">
+                                <input type="radio" id="recruiter" name="choice" value="recruiter" onChange={(e) => { setRegisterType(e.target.value); }} /> Recruiter
+                            </label>
+                            <label htmlFor="option2">
+                                <input type="radio" id="job-seeker" name="choice" value="job-seeker" onChange={(e) => { setRegisterType(e.target.value); }} /> Job seeker
+                            </label>
+                        </div>
 
                         {error && (
                             <p style={{ color: "red", width: "250px" }} className="error-message">

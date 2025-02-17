@@ -32,6 +32,13 @@
     background-color: #4c86af;
 }
 
+.job-offers-detail-inner {
+    display: flex;
+    padding: 0px 20px;
+    width: 40%;
+    justify-content: space-between;
+    margin: 0 0 3px 0;
+}
 
 
 @media (max-width: 768px) {
@@ -39,6 +46,9 @@
         margin: 10px;
         width: 90%;
         margin-bottom: 50px;
+    }
+    .job-offers-detail-inner{
+        width: 70%;
     }
 }
 

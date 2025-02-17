@@ -4,6 +4,7 @@ import insertManyRoute from "./Routes/insertRoute.js";
 import findRoute from "./Routes/findRoute.js";
 import deleteManyRoute from "./Routes/deleteManyRoute.js";
 import connectDB from "./Mongo Query/connectDB.js";
+import openJobsRoute from "./Routes/openJobsRoute.js";
 import cors from 'cors';
 
 
@@ -19,6 +20,7 @@ app.use(express.json());
 app.use("/insert", insertManyRoute);
 app.use("/find", findRoute);
 app.use("/delete", deleteManyRoute);
+app.use("/fetchJobs", openJobsRoute);
 
 
 connectDB();

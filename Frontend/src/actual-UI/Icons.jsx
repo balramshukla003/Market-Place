@@ -20,6 +20,10 @@ import { FaUser } from "react-icons/fa";
 import { MdPrivacyTip } from "react-icons/md";
 import { ImProfile } from "react-icons/im";
 
+import { HiRectangleStack } from "react-icons/hi2";
+import { SiLivechat } from "react-icons/si";
+import { MdOutlinePolicy } from "react-icons/md";
+
 // Export the icons as an object for easy access
 const icons = {
   mathGreater: TbMathGreater,
@@ -44,6 +48,9 @@ const icons = {
   user: FaUser,
   privacy: MdPrivacyTip,
   profile: ImProfile,
+  hire: HiRectangleStack,
+  chat: SiLivechat,
+  policy: MdOutlinePolicy
 
 };
 
