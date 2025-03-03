@@ -8,13 +8,14 @@ const Footer = () => {
     };
 
     const handleFutureFeatures = () => {
-        alert('Upcoming Features');
+        handleScrollToTop();
+        alert('comming soon...');
     };
 
     return (
         <div className="Footer">
             <div className="section-collection">
-                <section className="footer-sec" style={{ width: '28%', textAlign: 'left' }}>
+                <section className="footer-sec">
                     <h1>
                         <img src={Logo} alt="logo" className="LogoImg" />
                         Market Place
@@ -30,7 +31,7 @@ const Footer = () => {
                     <p>Fill Color In Life With Us!</p>
                 </section>
 
-                <section className="footer-sec">
+                <section className="footer-sec" >
                     <h2>Important Links</h2>
                     <p>
                         <Link to='/' onClick={handleScrollToTop}>

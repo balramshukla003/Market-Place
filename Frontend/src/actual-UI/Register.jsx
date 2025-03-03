@@ -1,13 +1,23 @@
 import '../css/Login.css';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import image from '../assets/draw2.jpg';
 import logo from '../assets/logo.png';
 import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/AuthProvider';
+
 
 
 const Register = () => {
 
     const navigate = useNavigate();
+
+    const { authUser, setAuthUser, userLoggedIn, setUserLoggedIn, } = useContext(AuthContext);
+
+    if (userLoggedIn) {
+        alert('You are logged in');
+        navigate('/');
+    }
+
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -28,12 +38,12 @@ const Register = () => {
         } else {
             setLoading(true);
 
+            const backendURl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000'
+
             try {
-                const response = await fetch("http://192.168.159.170:5000/insert", {             //192.168.98.170
+                const response = await fetch(`${backendURl}/register`, {
                     method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ name, type, email, password }),
                 });
 
@@ -41,7 +51,6 @@ const Register = () => {
                 setLoading(false);
 
                 if (response.ok) {
-                    console.log(response.message, response.data);
                     setError("Registration Successful redirecting to login page");
                     navigate('/login');
                 } else {

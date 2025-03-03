@@ -9,7 +9,7 @@ html ::-webkit-scrollbar {
     z-index: 1;
     background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(220, 220, 226, 1) 61%);
     border-bottom: 2px solid #333;
-
+    margin-bottom: 84px;
 }
 
 .upper-navbar {

@@ -20,16 +20,6 @@ const JobsFilters = () => {
       { id: "wm4", label: "Remote" },
       { id: "wm5", label: "Internship" },
     ],
-    department: [
-      { id: "de1", label: "Finance" },
-      { id: "de2", label: "Marketing" },
-      { id: "de3", label: "Engineering" },
-      { id: "de4", label: "Customer Service" },
-      { id: "de5", label: "Information Technology" },
-      { id: "de6", label: "Sales" },
-      { id: "de7", label: "Operations" },
-      { id: "de8", label: "HR" },
-    ],
     industry: [
       { id: "in1", label: "IT Services" },
       { id: "in2", label: "Development" },
@@ -42,6 +32,9 @@ const JobsFilters = () => {
       { id: "in9", label: "Accounting / Auditing" },
       { id: "in10", label: "Management Services" },
     ],
+  };
+
+  const filterGroups2 = {
     company: [
       { id: "c1", label: "Google" },
       { id: "c2", label: "Apple" },
@@ -93,13 +86,46 @@ const JobsFilters = () => {
 
   return (
     <div className="job_search">
-      <div className="job_search-inner">
-        <h1 className="jobHead">
-          Jobs are available for you&nbsp;
-        </h1>
 
-        <div className="filters-container">
+      <div className="job_search-inner">
+
+
+        <div className="filters-container" style={{ left: "50px"}}>
           {Object.entries(filterGroups).map(([group, items]) => (
+            <section key={group} className="filter-box" >
+              <h2>{group.replace("_", " ").toUpperCase()}</h2>
+              <div className="checkbox-grp">
+                {items.map((item) => (
+                  <div key={item.id} className="checkbox-item" >
+                    <input
+                      type="checkbox"
+                      checked={selectedFilters[group]?.includes(item.id)}
+                      onChange={(e) =>
+                        handleCheckboxChange(group, item.id, e.target.checked)
+                      }
+                    />
+                    <label>{item.label}</label>
+                  </div>
+                ))}
+              </div>
+            </section>
+          ))}
+        </div>
+
+
+
+
+
+
+
+        <div className="filtered-jobs">
+          <FilteredJobs />
+        </div>
+
+
+
+        <div className="filters-container" style={{ right: "50px" }}>
+          {Object.entries(filterGroups2).map(([group, items]) => (
             <section key={group} className="filter-box">
               <h2>{group.replace("_", " ").toUpperCase()}</h2>
               <div className="checkbox-grp">
@@ -120,12 +146,15 @@ const JobsFilters = () => {
           ))}
         </div>
 
-        <div className="dividerLine"></div>
 
-        <div className="filtered-jobs">
-          <FilteredJobs />
-        </div>
+
+
+
+
+
       </div>
+
+
     </div>
   );
 };

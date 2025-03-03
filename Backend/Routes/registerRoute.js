@@ -5,7 +5,6 @@ const router = express.Router();
 
 router.post('/', async (req, res) => {
 
-
     const jsonData = req.body;
     const result = await insertOne(jsonData);
 

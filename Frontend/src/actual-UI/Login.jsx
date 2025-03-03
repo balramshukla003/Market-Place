@@ -7,14 +7,22 @@ import { AuthContext } from '../context/AuthProvider';
 
 const Login = () => {
 
+    const Navigate = useNavigate();
+
     const { authUser, setAuthUser, userLoggedIn, setUserLoggedIn, } = useContext(AuthContext);
 
-    const [loading, setLoading] = useState(false);
+    useEffect(() => {
+        if (userLoggedIn) {
+            Navigate('/');
+        }
+    }, [userLoggedIn, Navigate]);
+
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const [password, setPassword] = useState('');
+
+    const [loading, setLoading] = useState(false);
     const [type, setRegisterType] = useState(null);
-    const Navigate = useNavigate();
 
 
     const handleSocialLogin = (platform) => {
@@ -34,17 +42,14 @@ const Login = () => {
         if (!type) {
             alert("Please select login type");
             return;
-        } else {
-            setLoading(true);
         }
+        setLoading(true);
+        const backendURl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000'
 
-        console.log(type);
         try {
-            const response = await fetch("http://192.168.159.170:5000/find", {
+            const response = await fetch(`${backendURl}/login`, {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, password, type }),
             });
 
@@ -54,7 +59,9 @@ const Login = () => {
             if (response.ok) {
                 if (data.match === true) {
                     setUserLoggedIn(true)
-                    setAuthUser({ type: type, Name: data.name })
+                    setAuthUser({ type: type, name: data.name, email: data.email})
+                    localStorage.setItem('jwt_token', data.token)
+                    console.log('Froentend token: ' + data.token)
                     setEmail('');
                     setPassword('');
                     Navigate('/');

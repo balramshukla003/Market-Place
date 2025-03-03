@@ -1,90 +1,129 @@
-import React, { useContext, useState } from 'react'
-import styles from '../css/JobSeekerUI.module.css';
-import { Link, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../context/AuthProvider.jsx';
+import React, { useContext, useEffect, useRef, useState } from 'react';
+import '../css/JobSeekerUI.css';
 import ImageLogo from '../assets/logo.png';
-import Icons from "../actual-UI/Icons.jsx";
+import Icons from '../actual-UI/Icons.jsx';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/AuthProvider.jsx';
+import UserProfile from './UserProfile.jsx';
 
-const Jobber_Navbar = () => {
+export default function Jobber_Navbar() {
+    const navigate = useNavigate();
+    const { authUser, setAuthUser, setUserLoggedIn } = useContext(AuthContext);
 
-    const userEmail = 'balramshukla003@gmail.com';
-    const userType="Jobber"
+    const [isOpen, setIsOpen] = useState(false); // For mobile menu
+    const [isUp, setIsUp] = useState(false); // For dropdown toggle
 
-    const { setUserLoggedIn } = useContext(AuthContext);
+    const windowRef = useRef(null);
 
-    const [userBox, setUserBox] = useState(false);
-    const Navigate = useNavigate();
+    const closeWindow = () => {
+        setIsOpen(false);
+        setIsUp(false);
+    };
 
-    if (userBox) {
-        setTimeout(() => {
-            setUserBox(false);
-        }, 5000);
-    }
-
-    const handleLogoClick = () => {
-        window.scrollTo(0, 0);
-        Navigate('/');
-    }
-
-
-    return (
-        <>
-            <header className={styles.header}>
-                <nav className={styles.nav}>
-
-                    <div className='nav-title' onClick={handleLogoClick} style={{ cursor: 'pointer' }}>
-                        <img src={ImageLogo} alt="Logo" />
-                        <h2>Market Place</h2>
-                    </div>
-
-                    <div className={styles.navLinks}>
-
-                        <Link className={styles.navLink}>
-                            <Icons.message className='icon' color='black' size={30} aria-label="Messages" />
-                        </Link>
-
-                        <Link className={styles.navLink}>
-                            <Icons.notification className='icon' color='black' size={30} aria-label="Notifications" />
-                        </Link>
-
-                        <Link onClick={() => { userBox == true ? setUserBox(false) : setUserBox(true) }} className={styles.navLink}>
-                            <Icons.user className='icon' color='black' size={26} onClick={() => userBox ? setUserBox(false) : setUserBox(true)} aria-label="User Profile" />
-                        </Link>
-
-                    </div>
-                </nav>
-            </header>
-
-
-            {
-                userBox && (
-
-                    <div className={styles.userBox}>
-
-                        <p>{userEmail}<p>Account Type: {userType}</p></p>
-                        
-
-                        <p className={styles.profile}>
-                            <Icons.profile /> profile
-                        </p>
-
-                        <p className={styles.profile}>
-                            <Icons.privacy /> privacy policy
-                        </p>
-
-                        <div className={styles.divider}></div>
-
-                        <input type="button" value="Logout" className={styles.signOutBtn} onClick={() => {
-                            setUserBox(false);
-                            setUserLoggedIn(false);
-                            Navigate('/');
-                        }} />
-
-                    </div>
-                )
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (windowRef.current && !windowRef.current.contains(event.target)) {
+                closeWindow();
             }
-        </>
-    )
-}
+        };
 
-export default Jobber_Navbar
+        const handleScroll = () => {
+            closeWindow();
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        document.addEventListener('scroll', handleScroll);
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+            document.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
+    const handleLogoClick = (path = '/') => {
+        navigate(path);
+        setIsOpen(false);
+    };
+
+    const toggleMenu = () => {
+        setIsUp(!isUp);
+        setIsOpen(!isOpen);
+    };
+
+    const handleLogout = () => {
+        setUserLoggedIn(false);
+
+        localStorage.removeItem('jwt_token');
+        navigate('/');
+    };
+
+    console.log("Navbar: ", authUser.name)
+    return (
+        <nav className="jobSeeker-Nav">
+            <div className="nav-part">
+                <div className="jobber-logo-container" onClick={() => handleLogoClick('/')}>
+                    <img src={ImageLogo} alt="Logo" />
+                    <h1>Market Place</h1>
+                </div>
+            </div>
+
+            <div className="nav-part" id="userPart">
+                <Icons.notification
+                    size={28}
+                    color="rgb(59 59 59)"
+                    onClick={() => alert('Coming Soon')}
+                />
+                <div className="jobber-detail" onClick={toggleMenu}>
+                    <img
+                        src={ImageLogo}
+                        alt="User"
+                        style={{
+                            width: '30px',
+                            height: '30px',
+                            border: '1px solid #ccc',
+                            borderRadius: '50%',
+                        }}
+                    />
+                    <h4>{authUser.name}</h4>
+                    {isUp ? <Icons.downArrow size={18} /> : <Icons.upArrow size={18} />}
+                </div>
+            </div>
+
+            <button onClick={toggleMenu} className="hamburger">
+                {isOpen ? '✖' : '☰'}
+            </button>
+
+            {isUp && (
+                <div className="toggledMenu" ref={windowRef}>
+                    <div className="jobber-detail" id="jobber-detail" onClick={() => handleLogoClick('/')}>
+                        <img
+                            src={ImageLogo}
+                            alt="User"
+                            style={{
+                                width: '22px',
+                                height: '22px',
+                                border: '1px solid #ccc',
+                                borderRadius: '50%',
+                            }}
+                        />
+                        <h4>Balram Shukla</h4>
+                    </div>
+                    <div className="usersett">
+                        <p>
+                            <Icons.policy size={18} /> Privacy Policy
+                        </p>
+                        <p onClick={() => {
+                            closeWindow();
+                            navigate('/user/profile')
+                        }} >
+                            <Icons.user size={18} /> User Profile
+                        </p>
+                    </div>
+                    <p onClick={handleLogout}>
+                        <Icons.logout size={18} /> Logout
+                    </p>
+                </div>
+            )}
+        </nav>
+    );
+}

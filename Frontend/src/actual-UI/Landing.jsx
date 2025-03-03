@@ -2,10 +2,13 @@ import Image from '../assets/homeBG.jpg';
 import '../css/Landing.css';
 import { Link, useNavigate } from 'react-router-dom';
 import Landing2 from './Landing2';
-import { useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
+import { AuthContext } from '../context/AuthProvider';
 
 
 function Landing() {
+
+    const { authUser, setAuthUser, userLoggedIn, setUserLoggedIn, } = useContext(AuthContext);
 
     const [input, setInput] = useState('');
     const navigate = useNavigate();
